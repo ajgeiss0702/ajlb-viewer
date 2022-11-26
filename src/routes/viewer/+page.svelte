@@ -15,7 +15,12 @@
         exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json());
     }
 </script>
-<div class="text-center">
+<style>
+    .big-page {
+        padding-bottom: 20em;
+    }
+</style>
+<div class="text-center big-page">
     {#if !browser}
         <div class="flex items-center h-screen">
             <div class="mx-auto h-24 w-24">
