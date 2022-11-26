@@ -8,7 +8,7 @@
     }
 </script>
 
-<div class="flex items-center h-full">
+<div class="flex items-center h-screen">
     <div class="mx-auto">
         {#if browser && !location.hash}
             To use the viewer, generate a link using <code>/ajlb exportweb</code> in-game

@@ -10,8 +10,6 @@
 
 <div style="min-height: calc(100vh - 1.5rem)">
     <slot/>
-    <br>
-    <br>
 </div>
 <div>
 
