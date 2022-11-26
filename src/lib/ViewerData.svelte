@@ -55,7 +55,7 @@
                         <td role="gridcell" aria-colindex={2} tabindex="0">
                             <Avatar src={`https://crafatar.com/avatars/${row.id}`} width="w-8" />
                         </td>
-                        <td role="gridcell" aria-colindex={3} tabindex="0" class="md:!whitespace-normal capitalize">
+                        <td role="gridcell" aria-colindex={3} tabindex="0" class="md:!whitespace-normal">
                             {row.namecache} / {row.displaynamecache}
                         </td>
                         <td role="gridcell" aria-colindex={4} tabindex="0" class="md:!whitespace-normal">
