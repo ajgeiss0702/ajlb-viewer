@@ -11,7 +11,7 @@
 <div class="flex items-center h-screen">
     <div class="mx-auto">
         {#if browser && !location.hash}
-            To use the viewer, generate a link using <code>/ajlb exportweb</code> in-game
+            To use the viewer, generate a link using <code>/ajlb viewer</code> in-game
         {:else}
             <div class="h-24 w-24">
                 <ProgressRadial/>
