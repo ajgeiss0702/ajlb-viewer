@@ -41,7 +41,7 @@
                 <br>
                 <br>
                 <AccordionGroup>
-                    {#each Object.entries(data) as [board, d]}
+                    {#each Object.entries(data).filter(e => e[0] !== "meta") as [board, d]}
                         <AccordionItem>
                             <svelte:fragment slot="summary">
                                 {board}
