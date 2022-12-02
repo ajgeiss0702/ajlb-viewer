@@ -4,6 +4,8 @@
     import {AccordionGroup, AccordionItem, ProgressRadial} from "@brainandbones/skeleton";
     import FakeProgress from "$lib/FakeProgress.svelte";
     import ViewerData from "$lib/ViewerData.svelte";
+    import InlinePlayer from "$lib/InlinePlayer.svelte";
+    import DateStamp from "$lib/DateStamp.svelte";
 
     let id;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -38,7 +40,16 @@
             {:then data}
                 <br>
                 <h2>Click a board below to see the data in that board</h2>
+                {#if data.meta}
+                    Taken by <InlinePlayer name={data.meta.taker.name} uuid={data.meta.taker.uuid}/>
+                    <br>
+                    <DateStamp epochSeconds={data.meta.datestamp/1000}/>
+                    <br>
+                    ajLeaderboards v{data.meta.version}
+                {/if}
                 <br>
+                <br>
+                <hr>
                 <br>
                 <AccordionGroup>
                     {#each Object.entries(data).filter(e => e[0] !== "meta") as [board, d]}
