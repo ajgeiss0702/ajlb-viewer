@@ -4,14 +4,14 @@
         Avatar,
         type DataTableModel,
         dataTableHandler,
-        dataTableSelectAll,
         dataTableSort,
         tableInteraction,
         tableA11y, Paginator
     } from "@brainandbones/skeleton";
+    import type {StatEntry} from "$lib/utils";
 
-    export let data;
-    export let board;
+    export let data: StatEntry[];
+    export let board: string;
 
     const dataTableModel: Writable<DataTableModel> = writable({
         source: data,

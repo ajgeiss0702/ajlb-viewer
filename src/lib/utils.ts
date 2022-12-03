@@ -1,11 +1,5 @@
-export function dateString(date = new Date(), seconds = true) {
-    let d;
-
-    if(date instanceof Date) {
-        d = date;
-    } else {
-        d = new Date(date);
-    }
+export function dateString(date: Date = new Date(), seconds = true) {
+    const d = date;
 
     let ap = 'AM';
     let hour: any = d.getHours();

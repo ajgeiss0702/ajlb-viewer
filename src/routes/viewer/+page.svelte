@@ -8,7 +8,7 @@
     import DateStamp from "$lib/DateStamp.svelte";
 	import type { ExportData } from "$lib/utils";
 
-    let id;
+    let id: string;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     let exportData: Promise<ExportData> = new Promise(() => {});
     if(browser && !location.hash) {
