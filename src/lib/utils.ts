@@ -110,3 +110,23 @@ export const shortMonths = [
     "Nov",
     "Dec"
 ];
+
+export type ExportData = {
+    [key: string]: StatEntry[] | ExportMeta,
+    "meta": ExportMeta
+}
+export type StatEntry = {
+    id: string,
+    value: number,
+    hourly_delta: number,
+    hourly_lasttotal: number,
+    hourly_timestamp: number
+}
+export type ExportMeta = {
+    version: string,
+    datestamp: number,
+    taker: {
+        uuid: string,
+        name: string
+    }
+}

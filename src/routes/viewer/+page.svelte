@@ -6,15 +6,16 @@
     import ViewerData from "$lib/ViewerData.svelte";
     import InlinePlayer from "$lib/InlinePlayer.svelte";
     import DateStamp from "$lib/DateStamp.svelte";
+	import type { ExportData } from "$lib/utils";
 
     let id;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    let exportData = new Promise(() => {});
+    let exportData: Promise<ExportData> = new Promise(() => {});
     if(browser && !location.hash) {
         goto("/")
     } else if(browser) {
         id = location.hash.substring(1);
-        exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json());
+        exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json())
     }
 </script>
 <style>
