@@ -9,9 +9,9 @@
 </script>
 
 <div class="flex items-center h-screen">
-    <div class="mx-auto">
+    <div class="mx-auto p-2 text-center">
         {#if browser && !location.hash}
-            To use the viewer, generate a link using <code>/ajlb viewer</code> in-game
+            To use the viewer, generate a link using <code>/ajlb&nbsp;viewer</code> in-game
         {:else}
             <div class="h-24 w-24">
                 <ProgressRadial/>
