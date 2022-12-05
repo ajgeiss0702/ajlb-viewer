@@ -1,11 +1,5 @@
-export function dateString(date = new Date(), seconds = true) {
-    let d;
-
-    if(date instanceof Date) {
-        d = date;
-    } else {
-        d = new Date(date);
-    }
+export function dateString(date: Date = new Date(), seconds = true) {
+    const d = date;
 
     let ap = 'AM';
     let hour: any = d.getHours();
@@ -110,3 +104,23 @@ export const shortMonths = [
     "Nov",
     "Dec"
 ];
+
+export type ExportData = {
+    [key: string]: StatEntry[] | ExportMeta,
+    "meta": ExportMeta
+}
+export type StatEntry = {
+    id: string,
+    value: number,
+    hourly_delta: number,
+    hourly_lasttotal: number,
+    hourly_timestamp: number
+}
+export type ExportMeta = {
+    version: string,
+    datestamp: number,
+    taker: {
+        uuid: string,
+        name: string
+    }
+}

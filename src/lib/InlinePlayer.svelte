@@ -1,6 +1,6 @@
-<script>
-    export let uuid;
-    export let name;
+<script lang="ts">
+    export let uuid: string;
+    export let name: string;
 </script>
 <style>
     img {
