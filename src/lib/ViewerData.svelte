@@ -15,7 +15,11 @@
 
     const dataTableModel: Writable<DataTableModel> = writable({
         source: data,
-        filtered: data,
+        filtered: data.sort((x, y) => {
+            const a = y.value as number;
+            const b = x.value as number;
+            return (a < b) ? -1 : ((a > b) ? 1 : 0)
+        }),
         selection: [],
         search: '',
         sort: '',
