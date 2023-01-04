@@ -10,12 +10,17 @@
 
     let errorText = "";
 
+    let fileData = getContext("fileData");
+
     let files;
     $: if(files) files[0].text()
         .then(text => JSON.parse(text))
-        .then(data => getContext("fileData").set(data))
+        .then(data => fileData.set(data))
         .then(() => goto("/viewer"))
-        .catch(() => errorText = "Unable to parse the file you provided. Is it a valid JSON export file from ajLeaderboards?")
+        .catch(e => {
+            errorText = "Unable to parse the file you provided. Is it a valid JSON export file from ajLeaderboards?";
+            console.error(e);
+        });
 </script>
 
 <div class="flex items-center h-screen">
