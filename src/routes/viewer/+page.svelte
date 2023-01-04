@@ -7,15 +7,20 @@
     import InlinePlayer from "$lib/InlinePlayer.svelte";
     import DateStamp from "$lib/DateStamp.svelte";
 	import type { ExportData } from "$lib/utils";
+    import {getContext} from "svelte";
 
     let id: string;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     let exportData: Promise<ExportData> = new Promise(() => {});
-    if(browser && !location.hash) {
+    if(browser && !(location.hash || getContext("fileData").get())) {
         goto("/")
     } else if(browser) {
         id = location.hash.substring(1);
-        exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json())
+        if(location.hash) {
+            exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json())
+        } else {
+            exportData = getContext("fileData").get()
+        }
     }
 </script>
 <style>

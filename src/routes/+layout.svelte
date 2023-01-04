@@ -2,10 +2,15 @@
     import '@brainandbones/skeleton/themes/theme-skeleton.css';
     import '@brainandbones/skeleton/styles/all.css';
     import '../app.postcss';
-    import {writable, type Writable} from "svelte/store";
-    import CommitInfo from "$lib/CommitInfo.svelte";
+    import {setContext} from "svelte";
+    import {type ExportData} from "../lib/utils";
 
-    const sideTab: Writable<number> = writable(1);
+    let fileData: ExportData;
+
+    setContext("fileData", {
+        get: () => fileData,
+        set: data => fileData = data
+    });
 </script>
 
 <div style="min-height: calc(100vh - 1.5rem)">

@@ -1,17 +1,32 @@
-<script>
+<script lang="ts">
     import {browser} from "$app/environment";
     import {goto} from "$app/navigation";
-    import {ProgressRadial} from "@brainandbones/skeleton";
+    import {FileDropzone, ProgressRadial} from "@brainandbones/skeleton";
+    import {getContext} from "svelte";
 
     if(browser && location.hash) {
         goto("/viewer" + location.hash);
     }
+
+    let errorText = "";
+
+    let files;
+    $: if(files) files[0].text()
+        .then(text => JSON.parse(text))
+        .then(data => getContext("fileData").set(data))
+        .then(() => goto("/viewer"))
+        .catch(() => errorText = "Unable to parse the file you provided. Is it a valid JSON export file from ajLeaderboards?")
 </script>
 
 <div class="flex items-center h-screen">
     <div class="mx-auto p-2 text-center">
         {#if browser && !location.hash}
-            To use the viewer, generate a link using <code>/ajlb&nbsp;viewer</code> in-game
+            To use the viewer, generate a link using <code>/ajlb&nbsp;viewer</code> in-game<br>
+            or<br>
+            <FileDropzone bind:files accept="application/json"/>
+            {#if errorText}
+                {errorText}<br>
+            {/if}
         {:else}
             <div class="h-24 w-24">
                 <ProgressRadial/>
