@@ -17,7 +17,7 @@
     } else if(browser) {
         id = location.hash.substring(1);
         if(location.hash) {
-            exportData = fetch("https://paste.ajg0702.us/" + id).then(r => r.json())
+            exportData = fetch("https://bytebin.ajg0702.us/" + id).then(r => r.json())
         } else {
             exportData = getContext("fileData").get()
         }
