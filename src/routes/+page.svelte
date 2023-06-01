@@ -1,11 +1,11 @@
 <script lang="ts">
-    import {browser} from "$app/environment";
+    import {browser, building} from "$app/environment";
     import {goto} from "$app/navigation";
     import {FileDropzone, ProgressRadial} from "@brainandbones/skeleton";
     import {getContext} from "svelte";
     import {page} from "$app/stores";
 
-    const searchId = $page.url.searchParams.get("id");
+    const searchId = building ? undefined : $page.url.searchParams.get("id");
 
 
     if(browser && (location.hash || searchId)) {
