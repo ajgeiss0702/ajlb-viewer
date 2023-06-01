@@ -3,9 +3,17 @@
     import {goto} from "$app/navigation";
     import {FileDropzone, ProgressRadial} from "@brainandbones/skeleton";
     import {getContext} from "svelte";
+    import {page} from "$app/stores";
 
-    if(browser && location.hash) {
-        goto("/viewer" + location.hash);
+    const searchId = $page.url.searchParams.get("id");
+
+
+    if(browser && (location.hash || searchId)) {
+        if(location.hash) {
+            goto("/viewer?id=" + location.hash.substring(1));
+        } else if(searchId) {
+            goto("/viewer?id=" + searchId);
+        }
     }
 
     let errorText = "";

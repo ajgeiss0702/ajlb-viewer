@@ -8,12 +8,20 @@
     import DateStamp from "$lib/DateStamp.svelte";
 	import type { ExportData } from "$lib/utils";
     import {getContext} from "svelte";
+    import {page} from "$app/stores";
+
+    const searchId = $page.url.searchParams.get("id");
 
     let id: string;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     let exportData: Promise<ExportData> = new Promise(() => {});
-    if(browser && !(location.hash || getContext("fileData").get())) {
+    if(browser && !(location.hash || getContext("fileData").get() || searchId)) {
         goto("/")
+    } else if(!browser || searchId) {
+        if(searchId) {
+            id = searchId;
+            exportData = fetch("https://bytebin.ajg0702.us/" + id).then(r => r.json())
+        }
     } else if(browser) {
         id = location.hash.substring(1);
         if(location.hash) {
